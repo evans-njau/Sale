@@ -1,86 +1,102 @@
 # 📊 Superstore Sales Analysis  
+*From Flat File to Star Schema — Power BI project demonstrating ETL, modeling, and visualization*
+
+---
 
 ## 📌 Project Overview  
-This project analyzes the **Superstore dataset** using **Power BI**. The goal is to uncover business insights related to **sales, profit, categories, shipping modes, and regional performance** over four years.  
-
-The project involves:  
-- Data cleaning and transformation in **Power Query**  
-- Creating a **data model (ERD)** for relationships  
-- Building **interactive dashboards** for visualization  
-- Extracting **key business insights** for decision-making  
-
----
-
-## 🛠️ Data Model (ERDs)  
-
-### 📌 Entity Relationship Diagram (ERD) – Initial  
-![ERD Initial](https://github.com/evans-njau/Sale/blob/master/flat%20file%20fields.png) 
-
-### 📌 Entity Relationship Diagram (ERD) – Final  
-![ERD Final](./erd2.png)  
+This project analyzes the **Superstore** sales dataset using **Power BI**. It demonstrates the full analytical workflow:
+- Data ingestion & cleaning (Power Query)  
+- Feature engineering (date parts, week-of-month)  
+- Splitting a flat file into a **star schema**  
+- Establishing relationships and validating the model  
+- Building interactive dashboards and extracting business insights  
 
 ---
 
-## 📊 Dashboards  
-
-### 1️⃣ General Overview  
-![General Overview](./dashboard1.png)  
-
-**Highlights:**  
-- March consistently shows the **highest spike in sales**, marking the beginning of the spring season.  
-- Technology is the **best performing category**, while Office Supplies lags behind.  
-- Sales for Technology **spike consistently each year**, unlike other categories.  
+## 🗂 Dataset Summary  
+- **Source**: Single flat file (orders, product, customer, shipping, region, sales columns).  
+- **Goal**: Normalize to a star schema (fact + dimensions) for performant, accurate reporting.  
 
 ---
 
-### 2️⃣ Regional Overview  
-![Regional Overview](./dashboard2.png)  
+## 🔄 Step-by-step: Data Preparation & Modeling
 
-**Highlights:**  
-- Top three profit-generating states: **California, New York, and Washington**.  
-- In the **Central & Eastern regions**, profits tend to **spike in the 4th week** of the month.  
-- In contrast, **Southern & Western regions** experience **profit declines** in the same period.  
+### 1. Import
+- Load CSV/Excel flat file into Power BI.  
+- Use **Transform data** to open Power Query Editor.  
+
+### 2. Data cleaning (Power Query)
+- Convert **Kenyan date format (dd/mm/yyyy)** to **U.S. format (mm/dd/yyyy)** using *Using Locale*.  
+- Change and validate data types: IDs (Text), Dates (Date), Numbers (Decimal/Whole Number).  
+- Handle missing values: remove blanks or replace nulls.  
+- Trim & clean text fields.  
+- Remove duplicates for dimension tables.  
+
+### 3. Feature engineering (date parts)
+From `OrderDate` in the Orders table:  
+- Extract **Year, MonthNumber, MonthName, DayName**.  
+- Create **Week of Month** (capped at 5):  
+  - Custom column formula:  
+    ```powerquery
+    if [Week of Month] > 5 then 5 else [Week of Month]
+    ```  
+
+### 4. Split flat file into tables
+Using **Reference** queries in Power Query:  
+- **Products** → ProductID, ProductName, Category, UnitPrice  
+- **Customers** → CustomerID, CustomerName, Region, City, State, Segment  
+- **Orders** → OrderID, OrderDate, ShipDate, derived date parts  
+- **Sales (Fact)** → SaleID, OrderID, ProductID, CustomerID, Quantity, UnitPrice, TotalAmount, Profit  
+
+### 5. Load & build relationships
+- Load all tables into the model.  
+- Relationships (star schema):  
+  - Products[ProductID] → Sales[ProductID]  
+  - Customers[CustomerID] → Sales[CustomerID]  
+  - Orders[OrderID] → Sales[OrderID]  
+- Validate one-to-many cardinality and referential integrity.  
+
+### 6. Month sorting & order
+- Create **MonthNumber** column.  
+- Sort MonthName by MonthNumber.  
+- Sort DayName by DayNumber for proper ordering.  
+
+### 7. Measures & visuals
+- Create KPIs: Total Sales, Total Profit, Avg Order Value.  
+- Use line charts, bar charts, maps, and cards for dashboards.  
+
+---
+
+## 🛠 ERD & Dashboards
+
+### ERDs
+- **Initial flat file ERD**  
+![ERD Initial](./images/erd1.png)  
+
+- **Star schema ERD**  
+![ERD Final](./images/erd2.png)  
 
 ---
 
-### 3️⃣ Insights Dashboard  
-![Insights](./dashboard3.png)  
+### Dashboards
+- **General Overview**  
+![General Overview](./images/dashboard1.png)  
 
-**Highlights:**  
-- **Average profit per ship mode** is nearly equal, with **First Class leading at 31%**.  
-- Revenue per ship mode shows **irregular spikes**, making it unpredictable.  
-- In March, **revenue across all shipping modes spiked upward**.  
-- Technology generated the **highest profit over four years**, while Furniture generated the **least revenue**.  
+- **Regional Overview**  
+![Regional Overview](./images/dashboard2.png)  
 
----
-
-## 🔑 Key Insights  
-
-- 📈 **Seasonality**: March marks the highest sales spike each year (spring season effect).  
-- 💻 **Category Performance**: Technology dominates in both revenue and profit, while Office Supplies underperform.  
-- 🚚 **Shipping Modes**: First Class edges others in profitability, but overall revenue shows irregularity.  
-- 🗺️ **Regional Trends**: Central & Eastern regions show stable late-month profit spikes, while Southern & Western regions struggle.  
-- 💰 **State-Level Performance**: California, New York, and Washington consistently generate the highest profits.  
+- **Insights Dashboard**  
+![Insights](./images/dashboard3.png)  
 
 ---
 
-## 🚀 Tools Used  
-- **Power BI** → Dashboarding & Data Visualization  
-- **Power Query** → Data Cleaning & Transformation  
-- **DAX** → Measures and Calculations  
-
-
----
-
-## 📌 Conclusion  
-This analysis provided deep insights into **sales trends, category performance, shipping modes, and regional profitability**.  
-The results can guide **business strategy, regional investments, and category focus** for future growth.  
+## 🔑 Key Insights
+- 📈 **Seasonality:** March consistently shows the highest spike in sales (spring effect).  
+- 💻 **Category Performance:** Technology is the top-performing category; Office Supplies underperform. Technology shows consistent yearly spikes.  
+- 💰 **Profit vs Revenue:** Technology generated the highest profit over four years; Furniture produced the least revenue.  
+- 🚚 **Ship Mode:** Average profit per ship mode is nearly equal (First Class leads at ~31%). Revenue per ship mode is irregular overall, but all modes spike in March.  
+- 🗺️ **Geography:** California, New York, and Washington generated the highest profits. Central & Eastern regions spiked in the 4th week of the month, while Southern & Western declined.  
 
 ---
 
-## 🔮 Future Work  
-- Adding **bookmarks, navigation buttons, and tooltips** for smoother interactivity  
-- Extending the analysis with **predictive modeling** (e.g., forecasting sales & profits)  
-- Automating **report refresh** for real-time dashboards  
-
----
+## 📂 Project Structure
