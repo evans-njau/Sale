@@ -14,7 +14,7 @@ The project involves:
 ## 🛠️ Data Model (ERDs)  
 
 ### 📌 Entity Relationship Diagram (ERD) – Initial  
-![ERD Initial](./erd1.png)  
+![ERD Initial](https://github.com/evans-njau/Sale/blob/master/flat%20file%20fields.png) 
 
 ### 📌 Entity Relationship Diagram (ERD) – Final  
 ![ERD Final](./erd2.png)  
