@@ -71,7 +71,7 @@ Using **Reference** queries in Power Query:
 
 ### ERDs
 - **Initial flat file ERD**  
-[![ERD Initial](./images/erd1.png)](https://github.com/evans-njau/Sale/blob/master/flat%20file%20fields.png)  
+(./images/erd1.png)](https://github.com/evans-njau/Sale/blob/master/flat%20file%20fields.png)  
 
 - **Star schema ERD**  
 ![ERD Final](./images/erd2.png)  
