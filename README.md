@@ -98,5 +98,3 @@ Using **Reference** queries in Power Query:
 - 🗺️ **Geography:** California, New York, and Washington generated the highest profits. Central & Eastern regions spiked in the 4th week of the month, while Southern & Western declined.  
 
 ---
-
-## 📂 Project Structure
