@@ -71,7 +71,7 @@ Using **Reference** queries in Power Query:
 
 ### ERDs
 - **Initial flat file ERD**  
-(https://github.com/evans-njau/Sale/blob/master/flat%20file%20fields.png)  
+![ERD Final](https://github.com/evans-njau/Sale/blob/master/flat%20file%20fields.png)  
 
 - **Star schema ERD**  
 ![ERD Final](https://github.com/evans-njau/Sale/blob/master/Tables%20relationships.png)  
