@@ -80,13 +80,13 @@ Using **Reference** queries in Power Query:
 
 ### Dashboards
 - **General Overview**  
-![General Overview](./images/dashboard1.png)  
+![General Overview](https://github.com/evans-njau/Sale/blob/master/Screenshot%20(52).png)  
 
 - **Regional Overview**  
-![Regional Overview](./images/dashboard2.png)  
+![Regional Overview](https://github.com/evans-njau/Sale/blob/master/Screenshot%20(53).png)  
 
 - **Insights Dashboard**  
-![Insights](./images/dashboard3.png)  
+![Insights](https://github.com/evans-njau/Sale/blob/master/Screenshot%20(54).png)  
 
 ---
 
