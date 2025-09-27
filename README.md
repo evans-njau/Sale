@@ -1,9 +1,9 @@
-# 📊 Superstore Sales Analysis  
+# Superstore Sales Analysis  
 *From Flat File to Star Schema — Power BI project demonstrating ETL, modeling, and visualization*
 
 ---
 
-## 📌 Project Overview  
+## Project Overview  
 This project analyzes the **Superstore** sales dataset using **Power BI**. It demonstrates the full analytical workflow:
 - Data ingestion & cleaning (Power Query)  
 - Feature engineering (date parts, week-of-month)  
@@ -13,13 +13,13 @@ This project analyzes the **Superstore** sales dataset using **Power BI**. It de
 
 ---
 
-## 🗂 Dataset Summary  
+## Dataset Summary  
 - **Source**: Single flat file (orders, product, customer, shipping, region, sales columns).  
 - **Goal**: Normalize to a star schema (fact + dimensions) for performant, accurate reporting.  
 
 ---
 
-## 🔄 Step-by-step: Data Preparation & Modeling
+## Step-by-step: Data Preparation & Modeling
 
 ### 1. Import
 - Load CSV/Excel flat file into Power BI.  
@@ -67,7 +67,7 @@ Using **Reference** queries in Power Query:
 
 ---
 
-## 🛠 ERD & Dashboards
+##  ERD & Dashboards
 
 ### ERDs
 - **Initial flat file ERD**  
@@ -90,11 +90,11 @@ Using **Reference** queries in Power Query:
 
 ---
 
-## 🔑 Key Insights
-- 📈 **Seasonality:** March consistently shows the highest spike in sales (spring effect).  
-- 💻 **Category Performance:** Technology is the top-performing category; Office Supplies underperform. Technology shows consistent yearly spikes.  
-- 💰 **Profit vs Revenue:** Technology generated the highest profit over four years; Furniture produced the least revenue.  
-- 🚚 **Ship Mode:** Average profit per ship mode is nearly equal (First Class leads at ~31%). Revenue per ship mode is irregular overall, but all modes spike in March.  
-- 🗺️ **Geography:** California, New York, and Washington generated the highest profits. Central & Eastern regions spiked in the 4th week of the month, while Southern & Western declined.  
+##  Key Insights
+-  **Seasonality:** March consistently shows the highest spike in sales (spring effect).  
+-  **Category Performance:** Technology is the top-performing category; Office Supplies underperform. Technology shows consistent yearly spikes.  
+-  **Profit vs Revenue:** Technology generated the highest profit over four years; Furniture produced the least revenue.  
+-  **Ship Mode:** Average profit per ship mode is nearly equal (First Class leads at ~31%). Revenue per ship mode is irregular overall, but all modes spike in March.  
+-  **Geography:** California, New York, and Washington generated the highest profits. Central & Eastern regions spiked in the 4th week of the month, while Southern & Western declined.  
 
 ---
